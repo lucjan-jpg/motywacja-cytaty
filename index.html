@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motywacyjne Cytaty</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #111827;
+    }
+    button {
+      background-color: #3b82f6;
+      color: white;
+      padding: 12px 24px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #2563eb;
+    }
+    .quote {
+      margin-top: 30px;
+      font-size: 20px;
+      font-style: italic;
+      color: #374151;
+      padding: 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎯 Motywacyjne Cytaty</h1>
+  <div>
+    <button onclick="showQuote('pilka')">⚽ Piłka nożna</button>
+    <button onclick="showQuote('trening')">🏋️ Trening</button>
+    <button onclick="showQuote('mental')">🧠 Mentalność</button>
+    <button onclick="showQuote('all')">🎲 Losuj dowolny</button>
+  </div>
+  <div class="quote" id="quote"></div>
+
+  <script>
+    const quotes = {
+      pilka: [
+        "Nigdy się nie poddawaj. Wielkie rzeczy wymagają czasu. – Cristiano Ronaldo",
+        "Sukces to suma małych wysiłków powtarzanych dzień po dniu. – Robert Lewandowski",
+        "Trening czyni mistrza. – Pelé"
+      ],
+      trening: [
+        "Ciężka praca pokonuje talent, jeśli talent nie pracuje ciężko.",
+        "Zawsze dawaj z siebie wszystko. Nawet jeśli nie widzisz od razu efektów.",
+        "Porażka to po prostu okazja, by spróbować jeszcze raz – tym razem mądrzej. – Michael Jordan"
+      ],
+      mental: [
+        "Jeśli wierzysz, że możesz – masz rację. Jeśli nie – też masz rację. – Henry Ford",
+        "Nie licz dni, spraw, by dni się liczyły. – Muhammad Ali",
+        "Mentalność zwycięzcy zaczyna się w głowie."
+      ]
+    };
+
+    function showQuote(category) {
+      const allQuotes = Object.values(quotes).flat();
+      const selected = category === 'all' ? allQuotes : quotes[category];
+      const quote = selected[Math.floor(Math.random() * selected.length)];
+      document.getElementById('quote').textContent = '„' + quote + '”';
+    }
+  </script>
+</body>
+</html>
