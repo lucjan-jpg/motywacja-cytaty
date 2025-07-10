@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Sukces zaczyna się w głowie</title>
   <style>
     body {
-      background-color: #4B0082; /* fiolet */
-      color: #FFD700; /* złoty */
+      background-color: #4B0082;
+      color: #FFD700;
       font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
@@ -52,7 +51,9 @@
   <div id="quote">Kliknij przycisk, aby wylosować cytat!</div>
   <button onclick="newQuote()">Losuj cytat</button>
 
-  <audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto"></audio>
+  <audio id="clickSound" preload="auto">
+    <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
+  </audio>
 
   <script>
     const quotes = [
@@ -61,22 +62,109 @@
       "3. Ciężka praca pokonuje talent, gdy talent nie pracuje ciężko.",
       "4. Nigdy się nie poddawaj – wielkość wymaga czasu.",
       "5. Twoje ciało osiągnie to, w co uwierzy twój umysł.",
-      // Dodaj tu więcej cytatów aż do 100 ↓↓↓
       "6. W każdej porażce kryje się ziarno sukcesu.",
       "7. Sukces to suma małych wysiłków powtarzanych codziennie.",
       "8. Silna głowa to silna gra.",
       "9. Trening czyni mistrza.",
       "10. Zrób dziś coś, za co sobie jutro podziękujesz.",
-      // (...)
+      "11. Nie ma zwycięstwa bez poświęceń.",
+      "12. Ból jest tymczasowy, duma trwa wiecznie.",
+      "13. Marzenia nie działają, dopóki ty nie zaczniesz działać.",
+      "14. Sport to szkoła życia.",
+      "15. Pokonuj granice – zaczynając od siebie.",
+      "16. Sukces to wybór, nie przypadek.",
+      "17. Dyscyplina to most między celami a ich realizacją.",
+      "18. Im więcej potu na treningu, tym mniej krwi w walce.",
+      "19. Zwycięstwo to kwestia nastawienia.",
+      "20. Kiedy się boisz – trenuj jeszcze mocniej.",
+      "21. Przegrana to nie koniec, to lekcja.",
+      "22. Pokonuj samego siebie każdego dnia.",
+      "23. Nie szukaj wymówek – znajdź sposób.",
+      "24. Nie trenujesz po to, by być dobrym. Trenujesz, by być najlepszym.",
+      "25. Talent to 10%, reszta to ciężka praca.",
+      "26. Nie jesteś tym, co osiągnąłeś – jesteś tym, co przezwyciężyłeś.",
+      "27. Bez pracy nie ma kołaczy – nawet na boisku.",
+      "28. Zawsze graj sercem.",
+      "29. Twój największy przeciwnik to ty sam.",
+      "30. Każdy dzień to nowa szansa na poprawę.",
+      "31. Trening zaczyna się tam, gdzie kończy się komfort.",
+      "32. Umysł decyduje, ciało wykonuje.",
+      "33. Zasługujesz na sukces, ale musisz na niego zapracować.",
+      "34. Porażka to krok do sukcesu.",
+      "35. Jeden mecz nie definiuje kariery.",
+      "36. Najlepsi nie rodzą się – najlepsi trenują.",
+      "37. Cel bez planu to tylko życzenie.",
+      "38. Praca zespołowa buduje mistrzów.",
+      "39. Szybkość to nic bez kontroli.",
+      "40. Graj tak, jakby to był Twój ostatni mecz.",
+      "41. Liczy się nie jak zaczynasz – ale jak kończysz.",
+      "42. Każdy bieg przybliża Cię do celu.",
+      "43. Koncentracja to klucz do wielkości.",
+      "44. Pasja to paliwo dla wytrwałości.",
+      "45. Jeśli nie teraz – to kiedy?",
+      "46. Walcz, aż nie będziesz musiał się przedstawiać.",
+      "47. Każde podanie to decyzja.",
+      "48. Rób różnicę – na boisku i poza nim.",
+      "49. Twój wysiłek mówi więcej niż Twoje słowa.",
+      "50. Nikt nie jest większy niż drużyna.",
+      "51. Gra toczy się w głowie.",
+      "52. Wszystko zaczyna się od pierwszego kroku.",
+      "53. Ruch to życie.",
+      "54. Ciało może, umysł musi.",
+      "55. Odpoczynek to też trening.",
+      "56. Graj czysto, walcz twardo.",
+      "57. Piłka nożna to więcej niż sport – to styl życia.",
+      "58. Mierz wysoko – nie boisz się upadków.",
+      "59. Słabość to stan przejściowy.",
+      "60. Nigdy nie przestawaj się rozwijać.",
+      "61. Praktyka czyni mistrza.",
+      "62. Nie wiesz, ile możesz, dopóki nie spróbujesz.",
+      "63. Wstań, popraw koronę i graj dalej.",
+      "64. Gdy boli – znaczy, że rośniesz.",
+      "65. Siła to nie wszystko – potrzebny też jest charakter.",
+      "66. Duma z wysiłku jest bezcenna.",
+      "67. Trener może wskazać drogę, ale ty musisz nią iść.",
+      "68. Każdy dzień to nowa okazja do pracy nad sobą.",
+      "69. Boisko nie wybacza lenistwa.",
+      "70. Kiedy nie chcesz – to znaczy, że powinieneś.",
+      "71. Lepsi od ciebie też zaczynali od zera.",
+      "72. Walcz o każdy centymetr.",
+      "73. Przyszłość należy do tych, którzy nie odpuszczają.",
+      "74. Nie licz na szczęście – licz na siebie.",
+      "75. Wygra ten, kto wytrzyma dłużej.",
+      "76. Trening to inwestycja, nie kara.",
+      "77. Rób wszystko tak, jakby ktoś na Ciebie patrzył.",
+      "78. Celuj w księżyc – nawet jak nie trafisz, będziesz wśród gwiazd.",
+      "79. Nic nie przychodzi samo.",
+      "80. Graj z pasją albo nie graj wcale.",
+      "81. Nie pytaj, kiedy koniec – skup się na tu i teraz.",
+      "82. Zbuduj swoją legendę.",
+      "83. Mistrzowie rodzą się z dyscypliny.",
+      "84. Nigdy nie mów, że masz dość.",
+      "85. Jesteś silniejszy niż myślisz.",
+      "86. W drodze po sukces licz się tylko z sobą.",
+      "87. Nie licz kalorii – licz powtórzenia.",
+      "88. Każdy dzień to szansa, by być lepszym.",
+      "89. Jeśli nie Ty, to kto?",
+      "90. Jeśli nie dziś, to kiedy?",
+      "91. Zawsze możesz dać więcej.",
+      "92. Przegrywa ten, kto przestaje próbować.",
+      "93. Masz w sobie siłę – pokaż ją.",
+      "94. Rób to, co inni uważają za niemożliwe.",
+      "95. Skup się na celu, nie na przeszkodach.",
+      "96. Wysokie cele = wysokie wyniki.",
+      "97. Nic nie zmienia się samo – działaj!",
+      "98. Mentalność zwycięzcy to wybór.",
+      "99. Najlepszy czas na działanie to teraz.",
       "100. Nie licz dni – spraw, by dni się liczyły."
     ];
 
     function newQuote() {
       const random = Math.floor(Math.random() * quotes.length);
       document.getElementById("quote").textContent = quotes[random];
-
-      // Dźwięk kliknięcia
-      document.getElementById("clickSound").play();
+      const sound = document.getElementById("clickSound");
+      sound.currentTime = 0;
+      sound.play();
     }
   </script>
 </body>
