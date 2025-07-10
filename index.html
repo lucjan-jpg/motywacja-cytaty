@@ -2,75 +2,171 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Motywacyjne Cytaty</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sukces zaczyna się w głowie</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f3f4f6;
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1602081119348-2fdddeeab9e2?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      color: gold;
       text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      backdrop-filter: brightness(0.8);
     }
+
     h1 {
-      color: #111827;
+      color: gold;
+      text-shadow: 1px 1px 4px #4b0082;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
     }
+
+    #quote {
+      font-size: 1.5rem;
+      margin: 20px auto;
+      color: #dda0dd;
+      max-width: 90%;
+      text-shadow: 0 0 5px #000;
+      padding: 0 15px;
+    }
+
     button {
-      background-color: #3b82f6;
+      background: linear-gradient(to right, gold, indigo);
       color: white;
-      padding: 12px 24px;
-      margin: 10px;
       border: none;
+      padding: 12px 24px;
+      font-size: 1.1rem;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 2rem;
     }
+
     button:hover {
-      background-color: #2563eb;
-    }
-    .quote {
-      margin-top: 30px;
-      font-size: 20px;
-      font-style: italic;
-      color: #374151;
-      padding: 0 10px;
+      opacity: 0.9;
     }
   </style>
 </head>
 <body>
-  <h1>🎯 Motywacyjne Cytaty</h1>
-  <div>
-    <button onclick="showQuote('pilka')">⚽ Piłka nożna</button>
-    <button onclick="showQuote('trening')">🏋️ Trening</button>
-    <button onclick="showQuote('mental')">🧠 Mentalność</button>
-    <button onclick="showQuote('all')">🎲 Losuj dowolny</button>
-  </div>
-  <div class="quote" id="quote"></div>
+  <h1>Sukces zaczyna się w głowie</h1>
+  <div id="quote">Kliknij przycisk, aby wylosować cytat!</div>
+  <button onclick="generateQuote()">Losuj cytat</button>
 
   <script>
-    const quotes = {
-      pilka: [
-        "Nigdy się nie poddawaj. Wielkie rzeczy wymagają czasu. – Cristiano Ronaldo",
-        "Sukces to suma małych wysiłków powtarzanych dzień po dniu. – Robert Lewandowski",
-        "Trening czyni mistrza. – Pelé"
-      ],
-      trening: [
-        "Ciężka praca pokonuje talent, jeśli talent nie pracuje ciężko.",
-        "Zawsze dawaj z siebie wszystko. Nawet jeśli nie widzisz od razu efektów.",
-        "Porażka to po prostu okazja, by spróbować jeszcze raz – tym razem mądrzej. – Michael Jordan"
-      ],
-      mental: [
-        "Jeśli wierzysz, że możesz – masz rację. Jeśli nie – też masz rację. – Henry Ford",
-        "Nie licz dni, spraw, by dni się liczyły. – Muhammad Ali",
-        "Mentalność zwycięzcy zaczyna się w głowie."
-      ]
-    };
+    const quotes = [
+      "Nie przestawaj, gdy jesteś zmęczony. Przestań, gdy skończysz.",
+      "Ciężka praca pokonuje talent, gdy talent nie pracuje ciężko.",
+      "Droga do sukcesu zaczyna się w głowie.",
+      "Dyscyplina to most między celami a osiągnięciem.",
+      "Zwycięzca to ktoś, kto wstaje, gdy inni rezygnują.",
+      "Nie licz dni, spraw, by dni się liczyły.",
+      "Gra to 90% mentalności i 10% fizyczności.",
+      "Twój jedyny limit to Ty sam.",
+      "Rób dziś to, czego inni nie chcą – jutro będziesz mieć to, czego inni nie mają.",
+      "Sukces nie przychodzi przypadkiem – to ciężka praca, wytrwałość i pasja.",
+      "Mistrzowie są tworzeni w cieniu, kiedy nikt nie patrzy.",
+      "Codziennie rób choć trochę więcej, niż się od Ciebie oczekuje.",
+      "Nie chodzi o to, jak mocno uderzasz, ale ile jesteś w stanie znieść.",
+      "Ciało osiąga to, w co uwierzy umysł.",
+      "Trenuj tak, jakbyś był drugi, graj jak pierwszy.",
+      "Nigdy nie rezygnuj z marzeń tylko dlatego, że ich realizacja wymaga czasu.",
+      "Koncentracja i determinacja robią różnicę.",
+      "Twoje nastawienie decyduje o Twojej wysokości.",
+      "Nie możesz wygrać, jeśli boisz się porażki.",
+      "Zwycięstwo rodzi się z poświęcenia.",
+      "Nie czekaj na okazję – stwórz ją.",
+      "Codzienny wysiłek to fundament wielkości.",
+      "Ciężkie dni budują silnych ludzi.",
+      "Przegrana to tylko lekcja, jeśli wyciągniesz z niej wnioski.",
+      "Ból jest chwilowy, duma trwa wiecznie.",
+      "Zawsze możesz więcej, niż myślisz.",
+      "Twoja praca przemówi za Ciebie.",
+      "Rób to, co kochasz – wtedy nie przestaniesz walczyć.",
+      "Nie musisz być najlepszy – musisz być lepszy niż wczoraj.",
+      "Każdy sukces zaczyna się od decyzji, by spróbować.",
+      "Nie ma skrótów – tylko praca.",
+      "Nie sztuką jest być zmotywowanym raz. Sztuką jest być zmotywowanym codziennie.",
+      "Najlepsi nie szukają wymówek – szukają sposobów.",
+      "Jeśli nie jesteś gotów na porażkę, nie jesteś gotów na sukces.",
+      "Bądź tak dobry, że nie będą mogli Cię zignorować.",
+      "Dyscyplina bije motywację.",
+      "Każdy trening zbliża Cię do celu.",
+      "Prawdziwi zwycięzcy trenują w ciszy, błyszczą w świetle.",
+      "Nie myśl, działaj.",
+      "Bez bólu nie ma postępu.",
+      "Dzisiaj zrób to, czego innym się nie chce.",
+      "Talent to tylko początek – reszta to praca.",
+      "Różnica między zwycięzcą a przegranym to jeden więcej krok.",
+      "Każdy wielki sportowiec był kiedyś początkującym.",
+      "Nigdy nie rezygnuj z siebie.",
+      "Wyróżniaj się pracą, nie gadaniem.",
+      "Nie musisz być perfekcyjny – bądź zaangażowany.",
+      "Marzenia są po to, by je spełniać – nie odkładać.",
+      "Ludzie sukcesu robią to, co trzeba – nie to, co łatwe.",
+      "Rób to z pasją albo wcale.",
+      "Nie porównuj się z innymi – porównuj się z sobą z wczoraj.",
+      "Małe kroki codziennie – wielkie wyniki później.",
+      "Nigdy nie przestawaj się uczyć.",
+      "Kiedy inni śpią, Ty pracujesz.",
+      "Zwycięstwo zaczyna się w głowie.",
+      "Treningi nie kłamią.",
+      "Nie poddawaj się, nawet gdy nikt nie wierzy.",
+      "Marzenia nie działają, jeśli Ty nie działasz.",
+      "Silna głowa to połowa sukcesu.",
+      "Każda porażka to krok do przodu.",
+      "Bądź gotowy, gdy pojawi się Twoja szansa.",
+      "Nie trać czasu na narzekanie – ruszaj do przodu.",
+      "Wygrywa ten, kto wierzy w siebie najbardziej.",
+      "Twoje nastawienie tworzy Twoją przyszłość.",
+      "Działaj, zanim będziesz gotów.",
+      "Lepiej próbować i przegrać niż nie próbować wcale.",
+      "Sukces to suma małych wysiłków powtarzanych codziennie.",
+      "Znajdź powód, a nie wymówkę.",
+      "Miej cel większy niż Twoje wymówki.",
+      "Nigdy nie jest za późno, by zacząć wygrywać.",
+      "Wstań. Popraw koronę. Idź dalej.",
+      "To, co robisz, gdy nikt nie patrzy, mówi najwięcej.",
+      "Pokonaj swoje słabości, zanim one pokonają Ciebie.",
+      "Przyszłość należy do tych, którzy się nie poddają.",
+      "Każdy dzień to nowa szansa.",
+      "Im ciężej trenujesz, tym łatwiej wygrywasz.",
+      "Nie myśl o porażce – myśl o celu.",
+      "Nie każdy dzień będzie idealny, ale każdy może Cię zbliżyć do celu.",
+      "Najwięksi przegrywali zanim wygrali.",
+      "Najpierw pracuj, potem świętuj.",
+      "Duma pojawia się po bólu.",
+      "Odważ się marzyć. Odważ się działać.",
+      "Nie jesteś zmęczony – jesteś blisko.",
+      "Wytrwałość to Twoja supermoc.",
+      "Dyscyplina to codzienne zwycięstwo nad sobą.",
+      "Zawsze graj do końca.",
+      "Masz tylko jedną szansę – wykorzystaj ją.",
+      "Nie bój się potu – bój się stagnacji.",
+      "Zwycięzcy nie mówią – działają.",
+      "Rób to dla siebie, nie dla lajków.",
+      "Nie urodziłeś się, by być przeciętny.",
+      "Twoja przyszłość zaczyna się teraz.",
+      "Nie ma drogi na skróty do sukcesu.",
+      "Niech każdy trening będzie Twoim powodem do dumy.",
+      "Zacznij tam, gdzie jesteś – z tym, co masz.",
+      "Wytrwaj. Opłaci się.",
+      "Dzisiaj jesteś krok bliżej niż wczoraj.",
+      "Sukces smakuje najlepiej po ciężkiej walce.",
+      "Uwierz w siebie, zanim zrobią to inni.",
+      "Najpierw ból. Potem siła. Potem zwycięstwo.",
+      "Ciało może, jeśli umysł chce."
+    ];
 
-    function showQuote(category) {
-      const allQuotes = Object.values(quotes).flat();
-      const selected = category === 'all' ? allQuotes : quotes[category];
-      const quote = selected[Math.floor(Math.random() * selected.length)];
-      document.getElementById('quote').textContent = '„' + quote + '”';
+    function generateQuote() {
+      const index = Math.floor(Math.random() * quotes.length);
+      document.getElementById('quote').textContent = quotes[index];
     }
   </script>
 </body>
